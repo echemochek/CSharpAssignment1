@@ -28,20 +28,21 @@ namespace CSharpAssignment1
         private static bool HalvesAreAlike(string s)
         {
             string vowels = "aeiouAEIOU";
-            int a = 0, b = 0, mid = vowels.Length/2;
+            int a = 0, b = 0, mid = s.Length/2;
             try
             {
-                // write your code here
-                for (int i = 0; i <= s.Length / 2; i++)
+                for (int i = 0; i < mid; i++)
                 {
-                    if (vowels.Contains(s[i])){
-                    a += 1;
+                    if (vowels.Contains(s[i].ToString()))
+                    {
+                        a += 1;
                     }
-                    if (vowels.Contains(s[-i-1])) {
-                    b += 1;
+                    if (vowels.Contains(s[mid + i].ToString()))
+                    {
+                        b += 1;
                     }
                 }
-                return a==b;
+                return a == b;
             }
             catch (Exception)
             {
