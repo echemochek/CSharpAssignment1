@@ -24,7 +24,7 @@ namespace CSharpAssignment1
             Console.WriteLine();
 
             //Question 2:
-            Console.WriteLine(" Q2 : Enter the string to check for pangram:");
+            Console.WriteLine("Q2 : Enter the string to check for pangram:");
             string s1 = Console.ReadLine();
             bool flag = CheckIfPangram(s1);
             if (flag)
@@ -35,6 +35,12 @@ namespace CSharpAssignment1
             {
                 Console.WriteLine("No, the given string is not a pangram");
             }
+            //Question 3:
+            int[,] arr = new int[,] { { 1, 2, 3 }, { 3, 2, 9 } };
+            int Wealth = MaximumWealth(arr);
+
+            Console.WriteLine("Q3:");
+            Console.WriteLine("Richest person has a wealth of {0}", Wealth);
 
         }
 
@@ -109,6 +115,29 @@ namespace CSharpAssignment1
                 throw;
             }
 
+        }
+        private static int MaximumWealth(int[,] accounts)
+        {
+            int rows = accounts.GetLength(0);
+            int cols = accounts.GetLength(1);
+
+            int[] customerWealth = new int[rows];
+            int i, j;
+            try
+            {
+                for (i = 0; i < rows; i++)
+                {
+                    customerWealth[i] = 0;
+                    for (j = 0; j < cols; j++)
+                        customerWealth[i] = customerWealth[i] + accounts[i, j];
+                }
+                Array.Sort(customerWealth);
+                return customerWealth[customerWealth.Length - 1];
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }
