@@ -28,7 +28,7 @@ namespace CSharpAssignment1
         private static bool HalvesAreAlike(string s)
         {
             string vowels = "aeiouAEIOU";
-            int a = 0, b = 0;
+            int a = 0, b = 0, mid = vowels.Length/2;
             try
             {
                 // write your code here
