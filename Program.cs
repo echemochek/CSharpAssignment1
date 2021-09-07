@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpAssignment1
 {
@@ -8,5 +10,19 @@ namespace CSharpAssignment1
         {
             Console.WriteLine("Hello World!");
         }
+        private static bool HalvesAreAlike(string s)
+        {
+            try
+            {
+                // write your code here
+                return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
     }
 }
