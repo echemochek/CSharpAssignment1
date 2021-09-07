@@ -42,6 +42,12 @@ namespace CSharpAssignment1
             Console.WriteLine("Q3:");
             Console.WriteLine("Richest person has a wealth of {0}", Wealth);
 
+            //Question 4:
+            string jewels = "z";
+            string stones = "ZZ";
+            Console.WriteLine("Q4:");
+            int num = NumJewelsInStones(jewels, stones);
+            Console.WriteLine("the number of stones you have that are also jewels are {0}:", num);
         }
 
         private static bool HalvesAreAlike(string s)
@@ -138,6 +144,29 @@ namespace CSharpAssignment1
             {
                 throw;
             }
+        }
+        private static int NumJewelsInStones(string jewels, string stones)
+        {
+            int total = 0;
+            try
+            {
+                // loop through each individual stone
+                for (int i = 0; i < stones.Length; i++)
+                {
+                    if (jewels.Contains(stones[i]))
+                    {
+                        total += 1;
+                    }
+                }
+                return total;
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("An error occured: " + e.Message);
+                throw;
+            }
+
         }
 
     }
