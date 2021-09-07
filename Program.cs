@@ -23,26 +23,86 @@ namespace CSharpAssignment1
 
             Console.WriteLine();
 
+            //Question 2:
+            Console.WriteLine(" Q2 : Enter the string to check for pangram:");
+            string s1 = Console.ReadLine();
+            bool flag = CheckIfPangram(s1);
+            if (flag)
+            {
+                Console.WriteLine("Yes, the given string is a pangram");
+            }
+            else
+            {
+                Console.WriteLine("No, the given string is not a pangram");
+            }
+
         }
-        
+
         private static bool HalvesAreAlike(string s)
         {
+            // declare the string of vowels both uppercase and lowercase to cater for both scenarios
             string vowels = "aeiouAEIOU";
+
+            // initialize a to count vowels in first half
+            // b to count vowels in second half
+            // mid to define the middle of the string
             int a = 0, b = 0, mid = s.Length/2;
             try
             {
+                // loop through indices of the halves of given string
                 for (int i = 0; i < mid; i++)
                 {
+                    // looping through elements of the first half and adding to a if element is vowel
                     if (vowels.Contains(s[i].ToString()))
                     {
                         a += 1;
                     }
+                    // looping through elements of the second half and adding to b if element is vowel
                     if (vowels.Contains(s[mid + i].ToString()))
                     {
                         b += 1;
                     }
                 }
+                // compare the value of a & b
+                // if equal, the halves have same number of vowels
                 return a == b;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        private static bool CheckIfPangram(string s)
+        {
+            // declare the string of alphabets, length of the alphabets, and length of the input sentence
+            string alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+            int a = alphabets.Length;
+            int b = s.Length;
+            int num = 0;
+            try
+            {
+                // loop through each letter of the alphabet
+                for (int i = 0; i < a; i++)
+                {
+                    // loop through each letter of the input sentence
+                    for (int j = 0; j < b; j++)
+                    {
+                        // compare alphabet letter with letter appearing in sentence
+                        // if they match, add 1 to the variable num
+                        if (alphabets[i] == s[j])
+                        {
+                            num += 1;
+                            // exit the loop to avoid counting other appearence of same letter
+                            break;
+                        }
+                    }
+                }
+                // there are 26 letters in the alphabet
+                // if num = 26, it means all letters of the alphabet appear in given sentence
+                return num == 26;
             }
             catch (Exception)
             {
