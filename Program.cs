@@ -265,6 +265,6 @@ namespace CSharpAssignment1
 }
 /*REFLECTIONS
  * Taking more time to study and understand the logic for solving the problem at hand is very important
- * Writing down the stepwise approach on a book before coding helps focus on conquering the problem in a better way
+ * Writing down the stepwise approach on a paper before coding helps focus on conquering the problem in a better way
  * You cannot get it right even if you are a good coder but not an analytical thinker
  */
