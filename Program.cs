@@ -48,6 +48,18 @@ namespace CSharpAssignment1
             Console.WriteLine("Q4:");
             int num = NumJewelsInStones(jewels, stones);
             Console.WriteLine("the number of stones you have that are also jewels are {0}:", num);
+
+            //Quesiton 6:
+            Console.WriteLine("Q6: Enter the sentence to convert:");
+            int[] nums = { 0, 1, 2, 3, 4 };
+            int[] index = { 0, 1, 2, 2, 1 };
+            int[] target = CreateTargetArray(nums, index);
+            Console.WriteLine("Target array  for the Given array's is:");
+            for (int i = 0; i < target.Length; i++)
+            {
+                Console.Write(target[i] + "\t");
+            }
+
         }
 
         private static bool HalvesAreAlike(string s)
@@ -164,6 +176,32 @@ namespace CSharpAssignment1
             {
 
                 Console.WriteLine("An error occured: " + e.Message);
+                throw;
+            }
+
+        }
+        private static int[] CreateTargetArray(int[] nums, int[] index)
+        {
+            try
+            {
+                var target = new List<int>(nums.Length);
+                if (nums.Length == index.Length && nums.Length >= 1 && nums.Length <= 100 && index.Length >= 1 && index.Length <= 100)
+                {
+                    for (int i = 0; i < nums.Length; i++)
+                    {
+                        if (nums[i] >= 0 && nums[i] <= 100 && index[i] >= 0 && index[i] <= i)
+                        {
+                            target.Insert(index[i], nums[i]);
+                        }
+                    }
+                }
+                int[] target_array = target.ToArray();
+                return target_array;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
                 throw;
             }
 
