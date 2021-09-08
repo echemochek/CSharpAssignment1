@@ -49,6 +49,14 @@ namespace CSharpAssignment1
             int num = NumJewelsInStones(jewels, stones);
             Console.WriteLine("the number of stones you have that are also jewels are {0}:", num);
 
+            //Question 5:
+            Console.WriteLine("Q5:");
+            String word2 = "aiohn";
+            int[] indices = { 3, 1, 4, 2, 0 };
+            String rotated_string = RestoreString(word2, indices);
+            Console.WriteLine("The Final string after rotation is", rotated_string);
+
+
             //Quesiton 6:
             Console.WriteLine("Q6: Enter the sentence to convert:");
             int[] nums = { 0, 1, 2, 3, 4 };
@@ -136,19 +144,28 @@ namespace CSharpAssignment1
         }
         private static int MaximumWealth(int[,] accounts)
         {
+            // get the number of rows and columns for easy processing later
             int rows = accounts.GetLength(0);
             int cols = accounts.GetLength(1);
 
+            // create a customerWealth variable to store total wealth for each customer
+            // length of the variable is equal to number of customers (number of rows)
             int[] customerWealth = new int[rows];
+
+            //initialize i & j for use in looping through the rows and the columns
             int i, j;
             try
             {
+                // loop through each row
                 for (i = 0; i < rows; i++)
                 {
+                    // get value of wealth of eachcustomer at bank j and add to their total wealth
                     customerWealth[i] = 0;
                     for (j = 0; j < cols; j++)
                         customerWealth[i] = customerWealth[i] + accounts[i, j];
                 }
+                // we have total wealth for individuals
+                // now we just sort them and get the highest value
                 Array.Sort(customerWealth);
                 return customerWealth[customerWealth.Length - 1];
             }
@@ -165,8 +182,10 @@ namespace CSharpAssignment1
                 // loop through each individual stone
                 for (int i = 0; i < stones.Length; i++)
                 {
+                    // see if the stone is a jewel by comparing with jewels variable
                     if (jewels.Contains(stones[i]))
                     {
+                        // add to count of stones that are jewels if it is true
                         total += 1;
                     }
                 }
@@ -180,13 +199,47 @@ namespace CSharpAssignment1
             }
 
         }
+        private static string RestoreString(string s, int[] indices)
+        {
+            try
+            {
+                // if lengths of the string s and array of integers indices are not equal return "null"
+                // else continue to execute 
+                if (s.Length != indices.Length)
+                {
+                    return "null";
+                }
+                else
+                {
+                    // we create an array of characters of same length as the array 'indices'
+                    char[] result = new char[indices.Length];
+
+                    // loop through each element in array 'indices' 
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        // now restore the correct order for the object
+                        result[indices[i]] = s[i];
+                    }                    
+                    return new string(result);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
         private static int[] CreateTargetArray(int[] nums, int[] index)
         {
             try
             {
+                // create the target variable
                 var target = new List<int>(nums.Length);
+                
+
                 if (nums.Length == index.Length && nums.Length >= 1 && nums.Length <= 100 && index.Length >= 1 && index.Length <= 100)
                 {
+                    // loop through elements of array nums
                     for (int i = 0; i < nums.Length; i++)
                     {
                         if (nums[i] >= 0 && nums[i] <= 100 && index[i] >= 0 && index[i] <= i)
@@ -195,6 +248,7 @@ namespace CSharpAssignment1
                         }
                     }
                 }
+                // return the needed array
                 int[] target_array = target.ToArray();
                 return target_array;
 
@@ -209,3 +263,8 @@ namespace CSharpAssignment1
 
     }
 }
+/*REFLECTIONS
+ * Taking more time to study and understand the logic for solving the problem at hand is very important
+ * Writing down the stepwise approach on a book before coding helps focus on conquering the problem in a better way
+ * You cannot get it right even if you are a good coder but not an analytical thinker
+ */
